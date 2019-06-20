@@ -1,6 +1,6 @@
 <template>
     <div class="AddTaskInput_container">
-        <input 
+        <a-input 
             placeholder="Please input new task" 
             v-model="content"
             @keyup.enter="submitNewTask()"
@@ -39,7 +39,6 @@ export default {
     height: 32px;
     padding: 4px;
     font-size: 16px;
-    border: 1px solid green;
 }
 </style>
 

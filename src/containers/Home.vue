@@ -12,12 +12,13 @@
     <a-row>
         <a-col :span="6">
             <a-menu
+                 v-model="current"
                  mode="vertical"
             >
-                <a-menu-item key="1">
+                <a-menu-item :key="0">
                     <router-link :to="{ name:'todo-list', params: { name }}">Todo列表</router-link>
                 </a-menu-item>
-                <a-menu-item key="1">
+                <a-menu-item :key="1">
                     <router-link :to="{ name: 'personal', params: { name }}">个人信息</router-link>
                 </a-menu-item>
             </a-menu>
@@ -32,6 +33,11 @@
 export default {
     props: {
         name: String,
+    },
+    data() {
+        return {
+            current: [0]
+        }
     },
     methods: {
         backButtonClick() {

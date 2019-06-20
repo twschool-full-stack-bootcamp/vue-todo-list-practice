@@ -1,27 +1,24 @@
 <template>
-    <div class="FilterTabs_container">
-        <button
-            class="FilterTabs_container_button-normal" 
-            :class="{ 'FilterTabs_container_button-selected': (tabType === 0)}"
+    <a-menu
+        v-model="tabType"
+        mode="horizontal"
+    >
+        <a-menu-item :key="0"
             @click="clickTab(0)"
-        >
+         >
             All
-        </button>
-        <button
-            class="FilterTabs_container_button-normal"
-            :class="{ 'FilterTabs_container_button-selected': (tabType === 1)}"
+        </a-menu-item>
+        <a-menu-item :key="1"
             @click="clickTab(1)"
         >
-            Undo
-        </button>
-        <button
-            class="FilterTabs_container_button-normal"
-            :class="{ 'FilterTabs_container_button-selected': (tabType === 2)}"
+            Undo 
+        </a-menu-item>
+        <a-menu-item :key="2"
             @click="clickTab(2)"
-         >
-            Done
-         </button>
-    </div>
+        >
+            Done 
+        </a-menu-item>
+    </a-menu>
 </template>
 
 <script>
@@ -29,9 +26,16 @@ import { mapState, mapMutations } from 'vuex';
 
 export default {
    name: 'FilterTabs',
-   computed: mapState([
-       'tabType'
-   ]),
+   computed: {
+       tabType: {
+           get() {
+              return [this.$store.state.tabType]; 
+           },
+           set(newValue) {
+               this.updateTabType(newValue[0]);
+           }
+       }
+   },
    methods: {
        ...mapMutations([
            'updateTabType',
