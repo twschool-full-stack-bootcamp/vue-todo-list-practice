@@ -35,6 +35,7 @@ export default {
 
     .Home_RightContent {
         text-align: left;
+        width: 90%;
     }
     
     .Home_BackButton {
