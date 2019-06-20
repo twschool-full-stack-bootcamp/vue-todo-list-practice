@@ -4,7 +4,6 @@ export default class Respository {
     addNewTask(newTask) {
         newTask.id = this.tasks.length + 1;
         this.tasks.push(newTask);
-        return this.tasks;
     }
 
     updateTask(task) {
@@ -12,7 +11,6 @@ export default class Respository {
         if (index >= 0) {
             this.tasks.splice(index, 1, task);
         }
-        return this.tasks;
     }
 
     filterByStatus(status) {

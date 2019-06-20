@@ -10,6 +10,7 @@
 
 <script>
 import { UNDO } from '../constant';
+
 export default {
     name: "AddTaskInput",
     data() {
@@ -19,7 +20,7 @@ export default {
     },
     methods: {
        submitNewTask() {
-           this.$emit('createNewTask', { content: this.content, status: UNDO });
+           this.$store.commit('addNewTask', { content: this.content, status: UNDO });
            this.content = '';
        } 
     },

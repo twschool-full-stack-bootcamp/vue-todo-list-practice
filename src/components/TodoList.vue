@@ -12,18 +12,19 @@
 
 <script>
 import TodoItem from './TodoItem';
+import { mapState } from 'vuex';
 
 export default {
   name: 'TodoList',
-  props: {
-    tasks: Array,
-  },
+  computed: mapState([
+    'tasks',
+  ]),
   components: {
     TodoItem,
   },
   methods: {
     updateTask(param) {
-      this.$emit('updateTask', param);
+      this.$store.commit('updateTask', param);
     }
   }
 }
