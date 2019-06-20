@@ -1,9 +1,13 @@
+import axios from 'axios';
+import { FETCH_TASK_LIST_URL, CREATE_TASK_URL } from '../constant';
 export default class Respository {
     tasks = [];
 
     addNewTask(newTask) {
-        newTask.id = this.tasks.length + 1;
-        this.tasks.push(newTask);
+        axios.post(CREATE_TASK_URL, newTask)
+            .then((response) => this.tasks.push(response.data.data))
+            .catch(() => {})
+        
     }
 
     updateTask(task) {
@@ -18,5 +22,14 @@ export default class Respository {
             return this.tasks.filter(item => item.status === status); 
         }
         return this.tasks;
+    }
+
+    fetchAllTasks(callback) {
+        axios.get(FETCH_TASK_LIST_URL)
+            .then((response) => {
+                this.tasks = response.data;
+                callback();
+            })
+            .catch(() => {});
     }
 }
