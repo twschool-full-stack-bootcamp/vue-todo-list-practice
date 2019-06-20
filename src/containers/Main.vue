@@ -1,7 +1,12 @@
 <template>
     <div class="Main_Container">
-        <input type="text" placeholder="请输入姓名" v-model="name" />
-        <button class="Main_StartButton" @click="startHomePage">开始使用</button>
+        <a-input 
+            type="text"
+            placeholder="请输入姓名" 
+            v-model="name" 
+            class="Main_Input"
+         />
+        <a-button class="Main_StartButton" type="primary" @click="startHomePage">开始使用</a-button>
         <router-link to="/home"></router-link>
     </div> 
 </template>
@@ -32,6 +37,10 @@ export default {
 
     .Main_StartButton {
         margin-top: 32px;
+    }
+
+    .Main_Input {
+        width: 200px;
     }
 </style>
 
