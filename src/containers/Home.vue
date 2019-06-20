@@ -1,16 +1,22 @@
 <template>
 <div class="Home_Container">
-    <div class="Home_Navigation">
-        <router-link :to="{ name:'todo-list', params: { name }}">Todo列表</router-link>
-        <router-link :to="{ name: 'personal', params: { name }}">个人信息</router-link>
-    </div>
-    <div class="Home_RightContent">
-        <div>
-            <button class="Home_BackButton" @click="backButtonClick()">返回</button>
+    <a-row type="flex" justify="space-between" align="middle">
+        <a-col :span="4">
+            <button @click="backButtonClick()">返回</button>
+        </a-col>
+        <a-col :span="6">
             <span>登录用户: {{ name }}</span>
-        </div>
-        <router-view></router-view>
-    </div>
+        </a-col>
+    </a-row>
+    <a-row>
+        <a-col :span="6">
+            <router-link :to="{ name:'todo-list', params: { name }}">Todo列表</router-link>
+            <router-link :to="{ name: 'personal', params: { name }}">个人信息</router-link>
+        </a-col>
+        <a-col :span="18">
+            <router-view></router-view>
+        </a-col>
+    </a-row>
 </div>
 </template>
 <script>
@@ -28,8 +34,6 @@ export default {
 
 <style scoped>
     .Home_Container {
-        display: flex;
-        justify-content: flex-start;
         height: 100%;
     }
 
