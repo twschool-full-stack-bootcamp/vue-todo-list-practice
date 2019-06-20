@@ -1,6 +1,6 @@
 <template>
 <div class="Home_Container">
-    <a-row type="flex" justify="space-between" align="middle">
+    <a-row type="flex" justify="space-between" align="middle" class="Home_Toolbar">
         <a-col :span="4">
             <button @click="backButtonClick()">返回</button>
         </a-col>
@@ -8,10 +8,19 @@
             <span>登录用户: {{ name }}</span>
         </a-col>
     </a-row>
+     <a-divider />
     <a-row>
         <a-col :span="6">
-            <router-link :to="{ name:'todo-list', params: { name }}">Todo列表</router-link>
-            <router-link :to="{ name: 'personal', params: { name }}">个人信息</router-link>
+            <a-menu
+                 mode="vertical"
+            >
+                <a-menu-item key="1">
+                    <router-link :to="{ name:'todo-list', params: { name }}">Todo列表</router-link>
+                </a-menu-item>
+                <a-menu-item key="1">
+                    <router-link :to="{ name: 'personal', params: { name }}">个人信息</router-link>
+                </a-menu-item>
+            </a-menu>
         </a-col>
         <a-col :span="18">
             <router-view></router-view>
@@ -42,8 +51,8 @@ export default {
         width: 90%;
     }
     
-    .Home_BackButton {
-      margin-bottom: 32px;
+    .Home_Toolbar {
+      margin-top: 32px;
     }
 
     .Home_Navigation {
