@@ -1,27 +1,30 @@
 <template>
-  <div class="todolist_container">
-    <TodoItem 
-      v-for="(item, index) in tasks" 
-      :key="index"
+  <a-list
+    itemLayout="horizontal"
+    :dataSource="tasks"
+  >
+   <a-list-item slot="renderItem" slot-scope="item, index">
+     <TodoItem 
       :index="index"
       :task="item"
       @updateTask="updateTask"
      />
-  </div>
+   </a-list-item>
+  </a-list>
 </template>
 
 <script>
 import TodoItem from './TodoItem';
-import { mapState, mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'TodoList',
   mounted() {
     this.fetchAllTask();
   },
-  computed: mapState([
-    'tasks',
-  ]),
+  computed: mapGetters({
+    tasks: 'filterTask'
+  }),
   components: {
     TodoItem,
   },
@@ -31,7 +34,7 @@ export default {
     ]),
     updateTask(param) {
       this.$store.commit('updateTask', param);
-    }
+    },
   }
 }
 </script>

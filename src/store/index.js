@@ -11,6 +11,16 @@ export default new Vuex.Store({
         tasks: respository.filterByStatus(),
         tabType: ALL_TAB, 
     },
+    getters: {
+        filterTask(state) {
+            if (state.tabType === DONE_TAB) {
+                return respository.filterByStatus(DONE); 
+            } else if (state.tabType === UNDO_TAB) {
+                return respository.filterByStatus(UNDO); 
+            }
+            return respository.filterByStatus();
+        }
+    },
     actions: {
         fetchAllTask({ commit }) {
             respository.fetchAllTasks(() => {
@@ -30,13 +40,6 @@ export default new Vuex.Store({
         },
         updateTabType(state, payload) {
             state.tabType = payload;
-            if (state.tabType === DONE_TAB) {
-                    state.tasks = respository.filterByStatus(DONE); 
-                } else if (state.tabType === UNDO_TAB) {
-                    state.tasks = respository.filterByStatus(UNDO); 
-                } else {
-                    state.tasks = respository.filterByStatus();
-                }
-            }
         }
+    }
 });

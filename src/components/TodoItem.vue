@@ -1,23 +1,28 @@
 <template>
-  <div 
-    class="TodoItem_container"
+  <a-row
     @dblclick.self="changeEditStatus"
+    type="flex"
+    justify="space-between"
+    align="middle"
    >
-        
-      <span 
-        :class="{'TodoItem_container-done': task.status === 'Done'}"
-        :style="{ display: editable ? 'none' : 'block' }"
-      >
-        {{ index + 1 }}. {{ task.content }}
-      </span>
-      <input
-        type="text"
-        :style="{ display: editable ? 'block': 'none' }"
-        v-model="content"
-        @keyup.enter="updateTaskContent"
-      />
+    <a-col :span="22">
+        <span 
+          :class="{'TodoItem_container-done': task.status === 'Done'}"
+          :style="{ display: editable ? 'none' : 'block' }"
+        >
+          {{ index + 1 }}. {{ task.content }}
+        </span>
+        <input
+            type="text"
+            :style="{ display: editable ? 'block': 'none' }"
+            v-model="content"
+            @keyup.enter="updateTaskContent"
+        />
+    </a-col>
+    <a-col :span="2">
       <input type="checkbox" :checked="task.status === 'Done'" @change="onChange" />
-  </div>
+    </a-col>
+  </a-row>
 </template>
 
 <script>
