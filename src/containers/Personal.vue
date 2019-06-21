@@ -1,10 +1,12 @@
 <template>
     <div>
-        <div>
-            <img src="../assets/logo.png" />
+        <div class="Personal_Avatar_Container">
+             <a-avatar :size="128" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"  />
         </div>
-       <div>姓名：{{ name }}</div>
-       <div>电话：12344253453</div>
+        <a-card title="信息">
+            <p>姓名：{{ name }}</p>
+            <p>电话：12344253453</p>
+        </a-card>
     </div>
 </template>
 <script>
@@ -14,3 +16,9 @@ export default {
     }
 }
 </script>
+<style scoped>
+    .Personal_Avatar_Container {
+        margin-bottom: 32px;
+    }
+</style>
+
