@@ -15,16 +15,16 @@
 
 <script>
 import TodoItem from './TodoItem';
-import { mapGetters, mapActions } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'TodoList',
   mounted() {
     this.fetchAllTask();
   },
-  computed: mapGetters({
-    tasks: 'filterTask'
-  }),
+  computed: mapState([
+    'tasks',
+  ]),
   components: {
     TodoItem,
   },
