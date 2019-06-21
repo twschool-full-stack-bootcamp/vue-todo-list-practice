@@ -12,10 +12,8 @@ export default new Vuex.Store({
         tabType: ALL_TAB, 
     },
     actions: {
-        fetchAllTask({ commit }) {
-            respository.fetchAllTasks(() => {
-                commit('addTaskList', respository.filterByStatus());
-            });    
+        fetchAllTask() {
+            respository.fetchAllTasks();
         }
     },
     mutations: {
@@ -24,9 +22,6 @@ export default new Vuex.Store({
         },
         updateTask(state, payload) {
             respository.updateTask(payload);
-        },
-        addTaskList(state, payload) {
-            state.tasks.push(...payload);
         },
         updateTabType(state, payload) {
             state.tabType = payload;
