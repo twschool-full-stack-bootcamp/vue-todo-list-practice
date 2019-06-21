@@ -27,6 +27,7 @@ export default class Respository {
     fetchAllTasks() {
         axios.get(FETCH_TASK_LIST_URL)
             .then((response) => {
+                this.tasks.splice(0, this.tasks.length);
                 this.tasks.push(...response.data);
             })
             .catch(() => {});

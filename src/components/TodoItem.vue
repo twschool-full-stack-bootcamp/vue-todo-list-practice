@@ -1,9 +1,9 @@
 <template>
   <a-row
-    @dblclick.self="changeEditStatus"
+    @dblclick.native="changeEditStatus"
     type="flex"
     justify="space-between"
-    align="middle"
+    class="TodoItem_container"
    >
     <a-col :span="22">
         <span 
@@ -12,15 +12,14 @@
         >
           {{ index + 1 }}. {{ task.content }}
         </span>
-        <input
-            type="text"
+        <a-input
             :style="{ display: editable ? 'block': 'none' }"
             v-model="content"
             @keyup.enter="updateTaskContent"
         />
     </a-col>
     <a-col :span="2">
-      <input type="checkbox" :checked="task.status === 'Done'" @change="onChange" />
+      <a-checkbox :checked="task.status === 'Done'" @change="onChange" />
     </a-col>
   </a-row>
 </template>
@@ -65,14 +64,9 @@ export default {
 
 <style scoped>
   .TodoItem_container {
-      display: flex;
-      padding: 8px;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      height: 32px;
-      line-height: 32px;
       cursor: pointer;
+      height: 100%;
+      width: 100%;
   }
 
   .TodoItem_container:hover {
