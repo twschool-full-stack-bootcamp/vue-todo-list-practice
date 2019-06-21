@@ -12,10 +12,8 @@ export default new Vuex.Store({
         tabType: ALL_TAB, 
     },
     actions: {
-        fetchAllTask({ commit }) {
-            respository.fetchAllTasks(() => {
-                commit('addTaskList', respository.filterByStatus());
-            });    
+        fetchAllTask() {
+            respository.fetchAllTasks();    
         }
     },
     mutations: {

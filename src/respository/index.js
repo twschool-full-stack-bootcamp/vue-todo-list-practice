@@ -24,11 +24,10 @@ export default class Respository {
         return this.tasks;
     }
 
-    fetchAllTasks(callback) {
+    fetchAllTasks() {
         axios.get(FETCH_TASK_LIST_URL)
             .then((response) => {
-                this.tasks = response.data;
-                callback();
+                this.tasks.push(...response.data);
             })
             .catch(() => {});
     }
